@@ -1,0 +1,995 @@
+﻿
+/*
+========================
+FONTES GOOGLE E LOCAL
+========================
+*/
+
+/* GOOGLE */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/*
+============================
+VARIÃVEIS TECH TRIO STUDIO
+============================
+*/
+
+:root{
+    /* CORES
+    --cor-fundo1: #008f8C;
+    --cor-fundo-2: #0fc2c0;
+    --cor-primaria: #0CABA8;
+    --cor-secundaria-1:#015958;
+    --cor-secundaria-2: #023535;
+    --cor-destaque: #008f8C;
+
+    --cor-texto: #2e2e2e;
+    --cor-titulo: #023535;
+    --cor-subtitulo: #015958;
+    --cor-teste-light:#4F686B;
+    --cor-teste-dark: #8AA0A3; */
+
+    /* SUPERFÃCIE */
+    --cor-fundo-1: #0B181C;
+    --cor-fundo-2: #081215;
+
+    /* TEXTO */
+    --cor-titulo: #ffffff;
+    --cor-texto: #8AA0A3;            /* parÃ¡grafos, links e copyright */
+
+    /* MARCA */
+    --cor-destaque: #0CABA8;         /* "Studio", botÃµes, Ã­cones */
+    --cor-destaque-claro: #0fc2c0;   /* hover */
+    --cor-destaque-escuro: #015958;  /* fundo dos cÃ­rculos das redes */
+    --cor-link: #526B6F;
+    --cor-traço:#19383C;
+
+    /* FONTES */
+    --fonte-titulo: "Poppins", sans-serif;
+    --fonte-texto: "Roboto", sans-serif;
+}
+
+h2{ font-family: var(--fonte-titulo);
+    font-size: 50px;
+    color: var(--cor-titulo);
+    font-weight: bold;
+}
+
+h3{
+    font-family: var(--fonte-titulo);
+    color: var(--cor-titulo);
+    font-size: 40px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+p{
+    font-family: var(--fonte-texto);
+    color: var(--cor-texto);
+    font-size: 25px;
+}
+
+input, select, textarea, button {
+  font-family: inherit;
+}
+
+body{
+    font-family: var(--fonte-texto);
+    background-color: var(--cor-fundo-1);
+}
+.site{
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+ 
+}
+
+.etiqueta {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #14DFD0;
+    margin-bottom: 16px;
+}
+
+/* TOPO */
+.topo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--cor-fundo1);
+    height: 230px;
+    
+}
+
+.topo div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+
+.topo ul{
+    display: flex;
+    gap: 60px;
+    font-size: 30px;
+}
+
+/* LOGO */
+.topo h1 {
+    width: 300px;
+    height: 240px;
+    background-image: url(../assets/logo.img.png);
+    background-size: cover; 
+    margin: 20px;
+    text-indent: -9999px;
+}
+
+
+
+
+/* MENU */
+.menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-family: var(--fonte-titulo);
+}
+
+.menu ul {
+    display: flex;
+    order: 0;
+}
+
+.menu ul li a {
+    font-size: 25px;
+    text-decoration: none;
+    margin: 0 20px;
+    font-family: var(--fonte-titulo);
+    color: var(--cor-titulo);
+}
+
+.menu ul li a:hover {
+    color: var(--cor-fundo-2);
+}
+
+/* REDE SOCIAIS */
+.redeSociais {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.redeSociais li{
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-destaque-escuro);
+    border-radius: 50px;
+
+     /*animar para deixar suave*/
+   transition: transform 0.25s ease,
+    background-color 1s ease,
+    box-shadow 0.25s ease;
+}
+
+.redeSociais li:hover{
+    background-color: var(--cor-destaque-claro);
+    transform: translateY(-3px) scale(1.12);
+    /*box-shadow: X Y Desfoque Cor*/
+    box-shadow: 0 5px 10px var(--cor-fundo-2);
+}
+
+.menu .redeSociais a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 30px;
+}
+
+.redeSociais img{
+    width: 18px;
+    display: block;
+    margin: 0 5px;
+}
+
+/* BANNER */
+.banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner img,
+.banner .slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-texto {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    z-index: 10;
+    color: var(--cor-titulo);
+    max-width: 400px;
+}
+
+.banner .slick-prev:before,
+.banner .slick-next:before {
+    font-size: 30px;
+    color: white;
+
+}
+
+.banner .slick-prev {
+    left: 25px;
+    z-index: 1;
+}
+
+.banner .slick-next {
+    right: 25px;
+}
+
+
+
+/* FIM BANNER */
+
+/* SOBRE */
+ .sobre-geral{
+    display: flex;
+     flex-direction: row-reverse; /* troca os lados */
+    max-width: 1200px;
+    margin: 50px auto;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+   
+ }
+
+.sobre .div{
+    display: flex;
+    justify-content: space-between; /* joga um pra cada lado */
+    align-items: center;
+    max-width: 1200px;
+    margin: 50px auto;
+
+}
+
+.sobre-texto{
+    max-width: 600px;
+}
+
+.sobre-img img{
+    width: 490px;
+    height: 360px;
+    object-fit: cover;
+}
+
+
+.sobre h3 {
+    color: var(--cor-titulo);
+    font-size: 40px;
+    font-family: var(--fonte-titulo);
+    margin: 30px 0 0 ;
+    text-align: center;
+}
+
+
+.sobre p {
+    color: var(--cor-texto);
+    font-size: 25px;
+    font-family: var(--fonte-texto);
+    text-align: left;
+    line-height: 1.6;
+}
+
+/* FIM SOBRE */
+
+/* NOSSOS SERVIÇOS */
+
+.nossos-servicos{
+    background-color: var(--cor-fundo-2);
+}
+
+.nossos-servicos header h3{
+    color: var(--cor-titulo);
+    font-family: var(--fonte-titulo);
+    margin: 0 0 28px;
+}
+
+.nossos-servicos-inteiro {
+    padding: 120px 0 120px 0;
+    
+}
+
+.nossos-servicos .coluna_de_servicos{
+    padding-top: 8px;
+    max-width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    gap: 14px;
+    margin-bottom: 50px;
+}
+
+
+.nossos-servicos .coluna_de_servicos .coluna_singular{
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 20px;
+    background-color: var(--cor-fundo-1);
+    border: 1px solid var(--cor-traço);
+    border-radius: 6px;
+}
+
+.nossos-servicos .coluna_de_servicos .coluna_singular img{
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 16px;
+    width: 34px;
+    height: 34px;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: #14DFD0;
+    transition: transform 0.25s ease;
+    transform-origin: center;
+}
+
+.nossos-servicos .coluna_de_servicos .coluna_singular img:hover{
+    transform: translateY(-10px) scale(1.3);
+}
+
+.nossos-servicos .coluna_de_servicos .coluna_singular h3{
+    margin: 0 0 8px;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.nossos-servicos .coluna_de_servicos .coluna_singular p{
+   margin: 0;
+   font-size: 12px;
+   line-height: 1.45;
+}
+
+@media (max-width: 800px){
+    .nossos-servicos .coluna_de_servicos{
+        flex-wrap: wrap;
+    }
+
+    .nossos-servicos .coluna_de_servicos .coluna_singular{
+        flex: 1 1 calc(50% - 14px);
+    }
+}
+
+@media (max-width: 520px){
+    .nossos-servicos header h3{
+        font-size: 24px;
+    }
+
+    .nossos-servicos .coluna_de_servicos .coluna_singular{
+        flex-basis: 100%;
+    }
+}
+
+/* FIM SERVIÇOS */
+
+/*! LINHA TEMPO */
+.secao-linha-tempo header h3{
+    color: var(--cor-titulo);
+    
+}
+
+.secao-linha-tempo h4{
+    line-height: 1.5;
+    font-size: 24px;
+    color: var(--cor-texto);
+    margin-bottom: 40px;
+}
+
+.linha-tempo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 50px;   
+    
+}
+
+.item-linha-tempo{
+    border-radius: 24px;
+    border: 1px solid var(--cor-traço);
+    background-color: var(--cor-fundo-2);
+    padding: 34px;
+}
+
+    .item-titulo-lp {
+        padding-top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        
+    }
+
+    .item-titulo-lp p{
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--cor-destaque-claro);
+        
+    }
+
+    .item-paragrafo-lp h4 {
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--cor-titulo);
+        margin: 16px 0;
+    }
+
+    .item-paragrafo-lp p{
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+
+
+/*! FINAL LINHA TEMPO */
+
+/* ComeÃ§o de Equipe */
+
+.equipe{
+    background-color: var(--cor-fundo-2);
+    padding: 70px 0;
+    
+}
+
+.equipe header h3 {
+    margin-bottom: 16px;
+}
+
+.equipe header h4 {
+    line-height: 1.5;
+    font-size: 24px;
+    color: var(--cor-texto);
+    margin-bottom: 40px;
+}
+
+/* .cabecario-equipe p{
+    padding-top: 50px;
+} */
+.cards-equipe{
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    align-items: center;
+}
+
+.card-main,
+.card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid var(--cor-traço);
+    border-radius: 12px;
+}
+
+.card img{
+    width: 332px;
+    height: 280px;
+    border-radius: 12px 12px 0 0;
+    
+    object-fit: cover;
+    transition: width 0.3s ease-in-out,
+                height 0.3s ease-in-out,
+                box-shadow 0.3s ease-in-out;
+   
+}
+
+.card-main img{
+    width: 432x;
+    height: 333px;
+    object-fit: cover;
+
+}
+
+.card:hover img {
+    width: 432px;
+    height: 333px;
+    box-shadow: 0px 10px 20px rgba(0,0,0, 0.7);
+}
+
+.card-main h3,
+.card h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-main h3{
+    width: 400xx;
+    height: 70px;
+    background-color: var(--cor-fundo-2);
+}
+
+.card h3{
+    width: 300px;
+    height: 70px;
+    padding: 16px;
+    background-color: var(--cor-fundo-2);
+    transition: width 0.3s ease-in-out;
+    border-radius: 0 0 12px 12px;
+    font-size: 30px;
+    transition: 0.3s ease-in;
+}
+
+.card:hover h3{
+    width: 400px;
+    font-size: 40px;
+}
+
+.card{
+    align-items: center;
+}
+/* Final de Equipe */
+
+
+
+/* ComeÃ§o Funcionamentos do Site */
+    /* .funcionamentos header h3{
+        max-width: 1500px;
+        text-align: center;
+        color: var(--cor-titulo);
+    }
+
+    .funcional-todos{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-content: space-around;
+    }
+
+    .funcionalidades{
+        display: flex;
+        
+        
+    }
+
+    .cards-funcio{
+        background-color: #008f8C;
+        width: 450px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 40px;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .cards-funcio img{
+        width: 60px;
+        height: 60px;
+        margin-top: 22px;
+        filter: brightness(0) invert(1);
+    }
+
+    .cards-funcio h4{
+        font-family: var(--fonte-titulo);
+        font-size: 35px;
+        color: var(--cor-titulo);
+        margin: 30px 0;
+    }
+
+    .cards-funcio p{
+        font-family: var(--fonte-texto);
+        font-size: 24px;
+        color: var(--cor-texto);
+        text-align: center;
+    }
+         */
+
+
+/* Final Funcionamentos do Site */
+
+/* FAQ */
+
+.accordion-container{
+    max-width: 1500px;
+    margin: 50px auto;
+}
+
+.accordion-container .ac{
+    background-color: var(--cor-fundo-2);
+    border-color: var(--cor-traço);
+    border-radius: 12px;
+}
+
+.accordion-container .ac .ac-trigger,
+.accordion-container .ac .ac-trigger::after,
+.accordion-container .ac .ac-panel .ac-text{
+    color: #fff;
+    font-size: 20px;
+    padding: 16px;
+}
+
+.accordion-container .ac .ac-panel .ac-text{
+    color: var(--cor-texto);
+}
+
+.accordion-container .ac .ac-trigger:focus,
+.accordion-container .ac .ac-trigger:hover{
+    color: var(--cor-destaque-claro);
+}
+
+    /*! FORMULÁRIO DE CONTATO */
+
+    .formulario_de_contato{
+        background-color: var(--cor-fundo-2);
+        padding: 120px 0;
+    }
+
+
+    .pai-formulario{
+        display: flex;
+    }
+
+    .formulario-esquerda{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .formulario-esquerda h4{
+        font-size: 24px;
+        color: var(--cor-texto);
+        margin-top: 24px;
+        margin-bottom: 50px;
+
+    }
+
+    /*! LINKS DA ESQUERDA */
+
+        .formulario-esquerda li{
+            display: block;
+            padding-bottom: 20px ;
+        }
+
+        .formulario-esquerda li a {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--cor-titulo);
+            font-size: 18px;
+            gap: 20px;
+            height: 100%;
+
+
+            transition: filter 0.6s ease;
+
+        }
+
+        .formulario-esquerda li a:hover{
+            /*? Esse 'filter' permite que pngs (ou outro tipo de itens nÃ£o-dinÃ¡micos) sejam alterado suas cores*/
+            filter: invert(41%) sepia(24%) saturate(355%) hue-rotate(140deg) brightness(88%) contrast(87%);
+        }
+
+        .formulario-esquerda a img {
+            max-height: 100%;
+            display: block;
+
+        }
+
+    /*! ====================== */
+/*! ==========================  */
+
+/*! CAMPO DE FORMULÁRIO */
+    .container_form{
+        /* Limita o cartão à largura da referência e evita que ultrapasse a tela. */
+        width: min(100%,580px);
+        /* Inclui padding e borda na largura total definida. */
+        box-sizing: border-box;
+        /* Cria espaço interno entre controles e borda do cartão. */
+        padding: 50px;
+        /* Centraliza o cartão no espaço disponível. */
+        margin: 0 auto;
+        /* Aplica a superfície escura usada no exemplo enviado. */
+        background-color:var(--cor-fundo-1);
+        /* Delimita suavemente o cartão em relação ao fundo. */
+        border: 1px solid var(--cor-traço);
+        /* Arredonda os cantos do cartão. */
+        border-radius: 12px;
+    }
+
+    .container_form form{
+        /* Organiza todos os campos em uma única coluna. */
+        display: flex;
+        flex-direction: column;
+        /* Mantém espaço constante entre os campos. */
+        gap: 18px;
+    }
+
+    .campo-formulario{
+        /* Coloca o rótulo acima de cada caixa. */
+        display: flex;
+        flex-direction: column;
+        /* Separa discretamente o rótulo do controle. */
+        gap: 6px;
+        /* Usa cor e tamanho de texto auxiliar. */
+        color: #9aafb2;
+        font-size: 16px;
+        font-family: var(--fonte-texto);
+    }
+
+    .container_form input,
+    .container_form select,
+    .container_form textarea{
+        /* Faz padding e borda caberem dentro da largura de 100%. */
+        box-sizing: border-box;
+        /* Faz cada controle ocupar a largura interna do cartão. */
+        width: 100%;
+        /* Cria área clicável e espaço para o texto. */
+        padding: 12px;
+        /* Define a cor e tamanho do texto inserido. */
+        color: #d5e1e2;
+        font-size: 18px;
+        font-family: var(--fonte-texto);
+        /* Desenha uma borda fina ao redor do controle. */
+        border: 1px solid var(--cor-traço);
+        /* Arredonda levemente os cantos das caixas. */
+        border-radius: 6px;
+        /* Mantém o contraste escuro do modelo. */
+        background-color: var(--cor-fundo-2);
+        /* Remove o contorno padrão para substituí-lo pelo foco de marca. */
+        outline: none;
+    }
+
+    /* Realça o controle que está recebendo a digitação ou seleção. */
+    .container_form input:focus,
+    .container_form select:focus,
+    .container_form textarea:focus{
+        border-color: var(--cor-destaque-claro);
+    }
+
+    .area_texto_form{
+        /* Faz a mensagem ocupar toda a largura do cartão. */
+        width: 100%;
+    }
+
+    .area_texto_form textarea{
+        /* Reserva espaço inicial suficiente para uma mensagem curta. */
+        min-height: 200px;
+        /* Permite aumentar a altura sem deformar a largura do formulário. */
+        resize: vertical;
+    }
+
+    /* Deixa os exemplos dos campos menos fortes que o texto digitado. */
+    .container_form input::placeholder,
+    .container_form textarea::placeholder{
+        color: #526b6f;
+    }
+
+    /* Aplica a cor auxiliar ao texto inicial do seletor ainda sem escolha. */
+    .container_form select:invalid{
+        color: #526b6f;
+    }
+
+    .botoes_form{
+        /* Usa a largura total disponível para o botão de envio. */
+        width: 100%;
+        display: flex;
+    }
+
+    .botoes_form button{
+        /* Faz o botão preencher a linha e facilita o toque em celular. */
+        width: 100%;
+        /* Define uma altura confortável para clicar. */
+        min-height: 43px;
+        /* Aplica o turquesa de destaque da identidade visual. */
+        background-color: var(--cor-destaque-claro);
+        /* Garante contraste do texto no botão. */
+        color: var(--cor-fundo-2);
+        font-family: var(--fonte-titulo);
+        font-size: 14px;
+        /* Remove a borda padrão e arredonda os cantos. */
+        border: 0;
+        border-radius: 6px;
+        /* Suaviza a mudança de cor ao passar o cursor. */
+        transition: background-color 0.2s ease;
+        /* Mostra que o botão é interativo. */
+        cursor: pointer;
+    }
+
+    .botoes_form button:hover{
+        /* Muda levemente o tom durante o hover. */
+        background-color: var(--cor-destaque);
+    }
+
+    /* Empilha o texto e o cartão quando a largura disponível é pequena. */
+    @media (max-width: 800px){
+        .pai-formulario{
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .container_form{
+            margin: 0;
+        }
+    }
+
+/*! ============================ */
+
+/*! RODAPE */
+
+    .rodape{
+        background-color: var(--cor-fundo-1);
+        margin:50px auto;
+        padding: 0 50px;
+    }
+
+    .rodape-conteudo{
+        display: grid;
+        grid-template-columns: 500px max-content auto;
+        gap: 40px;
+        justify-content: space-between;
+        padding: 60px 0;
+    }
+
+
+    .rodape-logo div{
+        padding-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .rodape-logo img{
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        display: block;
+    }
+
+    .rodape-logo div p{
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--cor-titulo);
+        
+    }
+
+    .rodape-logo div span{
+        color: var(--cor-destaque);
+    }
+
+    .rodape-logo p{
+        line-height: 1.5;
+        font-size: 16px;
+        padding-top: 8px;
+        color: var(--cor-texto);   
+    }
+    /*! LINKS - Do rodapé */
+        .rodape-links {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            font-family: var(--fonte-texto);
+        
+        }
+
+        .rodape-links h4{
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--cor-titulo);
+        }
+
+
+        .rodape-links  li{
+            margin: 20px 0 0 0;
+            
+            
+        }
+            
+        .rodape-links ul li a{
+            text-decoration: none;
+            font-family: var(--fonte-texto);
+            color: var(--cor-texto);
+            font-size: 16px;
+
+            transition: 0.5s ease;
+        }
+
+        .rodape-links a:hover{
+            color: var(--cor-destaque-claro);
+        }
+    /*! ========================= */
+
+    /*! LINHA DE SEPARAÃ‡ÃƒO  */
+
+        .rodape-linha {
+            height: 1px;
+            background-color: var(--cor-traço);
+        }
+
+    /*!==========================*/
+
+    /**! LINHAS FINAIS DO RODAPÃ‰ */
+
+        .rodape-final {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 0;
+        }
+
+        .rodape-creditos{
+            height: 21px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0;
+            text-align: center;
+        }
+
+        .rodape-creditos p{
+            margin: 0;
+            color: var(--cor-link);
+            font-family: var(--fonte-titulo);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .redes_footer{
+            display: flex;
+            gap: 10px;
+
+        }
+
+        .redeSociais {
+            gap: 20px;
+            
+        }
+
+    /*!===========================*/
+
+    @media (max-width: 700px){
+        .rodape-conteudo{
+            grid-template-columns: 1fr;
+            gap: 18px;
+            justify-items: center;
+            padding: 22px 15px;
+        }
+
+        .rodape-contato{
+            align-self: auto;
+        }
+
+        .rodape-contato h3{
+            margin-bottom: 18px;
+        }
+
+        .rodape-creditos p{
+            font-size: 15px;
+            line-height: 1.25;
+        }
+    }
+
+/*!=========================*/
+
+

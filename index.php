@@ -93,6 +93,7 @@
                         <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
+            </nav>
 
                 <!------ REDES SOCIAIS ------>
                 <div>
@@ -102,7 +103,6 @@
                         <li><a href="#"><img src="assets/whatsapp-24.png" alt="whatsApp - Tech Trio Studio"></a></li>
                     </ul>
                 </div>
-            </nav>
 
         </div>
 
@@ -310,18 +310,18 @@
 
                 <div class="cards-equipe">
                     <div class="card">
-                        <img src="./assets/yuri_foto.png" alt="foto do membro do TechTrioStudio">
-                        <h3>Yuri Lemos</h3>
+                        <img src="./assets/andre_foto.jpg" alt="foto do membro do TechTrioStudio">
+                        <h3>André Coelho</h3>
                     </div>
 
                     <div class="card">
-                        <img src="./assets/foto_arthur.png" alt="foto do membro do TechTrioStudio">
-                        <h3>Arthur Costa</h3>
+                        <img src="./assets/guilherme_foto.png" alt="foto do membro do TechTrioStudio">
+                        <h3>Guilherme Pignataro</h3>
                     </div>
 
                     <div class="card">
-                        <img src="./assets/kevelly_foto.png" alt="foto da membra do TechTrioStudio">
-                        <h3>Kevelly Calvacanti</h3>
+                        <img src="./assets/kaua_foto.png" alt="foto da membra do TechTrioStudio">
+                        <h3>Kauã Moreira</h3>
                     </div>
 
                 </div>
@@ -627,7 +627,7 @@
             <div class="rodape-final site">
 
                 <div class="rodape-creditos">
-                    <p>&copy; 2026 - Criado e Desenvolvido por TIPI06 - SENAC SMP</p>
+                    <p>&copy; <?php $data = date('Y'); echo $data; ?> - Criado e Desenvolvido por TIPI06 - SENAC SMP</p>
                 
                 </div>
                 

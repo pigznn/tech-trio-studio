@@ -109,31 +109,42 @@ body{
     justify-content: space-between;
     align-items: center;
     background-color: var(--cor-fundo1);
-    height: 230px;
-    
+    padding: 15px 0;
+
 }
 
 .topo div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
+}
+
+/* ocupa a largura toda: logo à esquerda, menu no meio, redes à direita */
+.topo > div {
+    width: 100%;
+    padding: 0 40px;
+    box-sizing: border-box;
 }
 
 
 .topo ul{
     display: flex;
-    gap: 60px;
+    gap: 40px;
     font-size: 30px;
 }
 
 /* LOGO */
 .topo h1 {
-    width: 300px;
-    height: 240px;
+    width: 130px;
+    height: 120px;
     background-image: url(../assets/logo.img.png);
-    background-size: cover; 
-    margin: 20px;
+    /* o PNG tem muita borda vazia: amplia e mostra só o desenho */
+    background-size: 260px 260px;
+    background-position: -65px -60px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    margin: 0 20px;
     text-indent: -9999px;
 }
 
@@ -157,16 +168,23 @@ body{
 .menu ul li a {
     font-size: 25px;
     text-decoration: none;
-    margin: 0 20px;
+    margin: 0 15px;
     font-family: var(--fonte-titulo);
     color: var(--cor-titulo);
+    transition: .25s ease;
+
 }
 
 .menu ul li a:hover {
-    color: var(--cor-fundo-2);
+    color: var(--cor-destaque-claro);
 }
 
 /* REDE SOCIAIS */
+/* afasta as redes sociais do menu */
+.topo .redeSociais {
+    margin-left: 70px;
+}
+
 .redeSociais {
     display: flex;
     align-items: center;
@@ -214,7 +232,6 @@ body{
 .banner {
     position: relative;
     width: 100%;
-    overflow: hidden;
 }
 
 .banner img,
@@ -234,20 +251,25 @@ body{
     max-width: 400px;
 }
 
-.banner .slick-prev:before,
-.banner .slick-next:before {
-    font-size: 30px;
+/* bolinhas na parte de baixo, dentro do banner */
+.banner .slick-dots {
+    z-index: 11;
+}
+
+.banner .slick-dots li {
+    top: 10px;
+    margin: 0 6px;
+}
+
+.banner .slick-dots li button:before {
+    font-size: 18px;
     color: white;
-
+    opacity: 0.5;
 }
 
-.banner .slick-prev {
-    left: 25px;
-    z-index: 1;
-}
-
-.banner .slick-next {
-    right: 25px;
+.banner .slick-dots li.slick-active button:before {
+    color: #14DFD0;
+    opacity: 1;
 }
 
 
@@ -259,7 +281,7 @@ body{
     display: flex;
      flex-direction: row-reverse; /* troca os lados */
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 0 auto;
     justify-content: space-between;
     align-items: flex-start;
     gap: 40px;
@@ -271,7 +293,7 @@ body{
     justify-content: space-between; /* joga um pra cada lado */
     align-items: center;
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 70px auto;
 
 }
 
@@ -290,7 +312,7 @@ body{
     color: var(--cor-titulo);
     font-size: 40px;
     font-family: var(--fonte-titulo);
-    margin: 30px 0 0 ;
+    margin: 70px 0 0 ;
     text-align: center;
 }
 
@@ -328,7 +350,7 @@ body{
     display: flex;
     align-items: stretch;
     flex-direction: row;
-    gap: 14px;
+    gap: 20px;
     margin-bottom: 50px;
 }
 
@@ -336,20 +358,20 @@ body{
 .nossos-servicos .coluna_de_servicos .coluna_singular{
     flex: 1 1 0;
     min-width: 0;
-    padding: 20px;
+    padding: 28px;
     background-color: var(--cor-fundo-1);
     border: 1px solid var(--cor-traço);
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 .nossos-servicos .coluna_de_servicos .coluna_singular img{
     box-sizing: border-box;
     display: block;
-    margin-bottom: 16px;
-    width: 34px;
-    height: 34px;
-    padding: 8px;
-    border-radius: 6px;
+    margin-bottom: 20px;
+    width: 46px;
+    height: 46px;
+    padding: 11px;
+    border-radius: 8px;
     background-color: #14DFD0;
     transition: transform 0.25s ease;
     transform-origin: center;
@@ -360,17 +382,17 @@ body{
 }
 
 .nossos-servicos .coluna_de_servicos .coluna_singular h3{
-    margin: 0 0 8px;
+    margin: 0 0 12px;
     color: var(--cor-titulo);
     font-family: var(--fonte-texto);
-    font-size: 14px;
+    font-size: 19px;
     font-weight: 500;
 }
 
 .nossos-servicos .coluna_de_servicos .coluna_singular p{
    margin: 0;
-   font-size: 12px;
-   line-height: 1.45;
+   font-size: 16px;
+   line-height: 1.5;
 }
 
 @media (max-width: 800px){
@@ -396,6 +418,10 @@ body{
 /* FIM SERVIÇOS */
 
 /*! LINHA TEMPO */
+.secao-linha-tempo{
+    padding: 70px;
+}
+
 .secao-linha-tempo header h3{
     color: var(--cor-titulo);
     

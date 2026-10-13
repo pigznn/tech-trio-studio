@@ -1,4 +1,76 @@
-﻿<!DOCTYPE html>
+﻿<?php
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+$ok = 0;
+if(isset($_POST['email'])){
+
+//Load Composer's autoloader (created by composer, not included with PHPMailer)
+require 'vendor/phpmailer/PHPMailer.php';
+require 'vendor/phpmailer/SMTP.php';
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+
+    // Pegar informações do formulário
+    $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    $assunto = $_POST["assunto"];
+    $mensagem = $_POST["mensagem"];
+    
+    //Server settings
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'contato.techtriostudio@gmail.com';                     //SMTP username
+    $mail->Password   = 'fvvwpxqtyqeinqec';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('contato.techtriostudio@gmail.com', 'Tech Trio Studio'); // Quem dispara o e-mail
+    $mail->addAddress('mundoprehistocico@gmail.com', 'André');     //Add a recipient
+    $mail->addAddress('ellen@example.com');               //Name is optional
+    // $mail->addReplyTo('info@example.com', 'Information');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
+
+    //Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = $assunto;
+    $mail->Body    = "
+        Nome: $nome <br>
+        E-Mail: $email <br>
+        Assunto: $assunto <br>
+        Mensagem: $mensagem
+    ";
+    $mail->AltBody = "
+        Nome: $nome \n
+        E-Mail: $email \n
+        Assunto: $assunto \n
+        Mensagem: $mensagem
+    ";
+
+    $mail->send();
+    $ok = 1;
+} catch (Exception $e) {
+    $ok = 2;
+}
+
+}
+?>
+
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -14,7 +86,7 @@
         content="criaÃ§Ã£o de sites, desenvolvimento web, design responsivo, agÃªncia digital, sites personalizados, UX UI design, identidade visual, marketing digital, presenÃ§a online, tecnologia digital">
 
     <!-- Autor do Site -->
-    <meta name="author" content="Arthur Ogrodowski, Kevelly Calvacanti, Yuri Lemos">
+    <meta name="author" content="TECH TRIO STUDIO">
 
     <!-- Open Graph (Compartilhar no Whats, Face, X, LinkedIn) -->
     <meta property="og:title" content="Holambratech">
@@ -184,7 +256,7 @@
         <!-- FINAL DOS NOSSO SERVIÇOS -->
 
         <!-- LINHA DO TEMPO -->
-        <section class="secao-linha-tempo site">
+        <section id="linha-tempo" class="secao-linha-tempo site">
 
             <header>
                 <p class="etiqueta">Como Trabalhamos</p>
@@ -526,6 +598,14 @@
                 <div class="container_form">
 
                     <form action="#" method="post">
+
+                        <!-- Alertas -->
+                        <?php if($ok == 1): ?>
+                            <div class="alerta-sucesso">Mensagem enviada com sucesso!</div>
+                        <?php elseif($ok == 2): ?>
+                            <div class="alerta-erro">Erro ao enviar mensagem. Por favor, tente novamente mais tarde.</div>
+                        <?php endif; ?>
+
                         <label class="campo-formulario">
                             <span>Seu nome completo</span>
                             <input type="text" name="nome" placeholder="Luis Alvez de lima" autocomplete="name" required>
@@ -595,10 +675,10 @@
                 <div class="rodape-links">
                     <h4>Serviços</h4>
                         <ul>
-                            <li><a href="#">Websites Optmizados</a></li>
-                            <li><a href="#">Landing Pages Premium</a></li>
-                            <li><a href="#">Otimização SEO</a></li>
-                            <li><a href="#">Suporte Exclusivo</a></li>
+                            <li><a href="#servicos">Websites Optmizados</a></li>
+                            <li><a href="#servicos">Landing Pages Premium</a></li>
+                            <li><a href="#servicos">Otimização SEO</a></li>
+                            <li><a href="#servicos">Suporte Exclusivo</a></li>
                         </ul>
                 
                 </div>
@@ -607,9 +687,9 @@
                 <div class="rodape-links">
                     <h4>Agência</h4>
                     <ul>
-                        <li><a href="#sobre">Sobre nós</a></li>
+                        <li><a href="#sobre">Sobre nós</a></li> 
                         <li><a href="#time">Nosso Time</a></li>
-                        <li><a href="#">Estudo de Casos</a></li>
+                        <li><a href="#linha-tempo">Estudo de Casos</a></li>
                         <li><a href="#contato">Fale Conosco</a></li>
                     </ul>    
 
@@ -627,7 +707,7 @@
             <div class="rodape-final site">
 
                 <div class="rodape-creditos">
-                    <p>&copy; 2026 - Criado e Desenvolvido por TIPI06 - SENAC SMP</p>
+                    <p>&copy; <?php echo date("Y"); ?> - Criado e Desenvolvido por Tech Trio Studio</p>
                 
                 </div>
                 

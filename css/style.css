@@ -726,6 +726,23 @@ body{
         gap: 18px;
     }
 
+    /* Alertas */
+    .alerta-sucesso{
+        font-family: var(--fonte-titulo);
+        background: linear-gradient(174deg, rgba(4, 149, 147, 0.741), rgba(1, 89, 88, 0.459));
+        color:#baf8ff;
+        padding: 10px;
+        border-radius: 6px;
+    }
+
+    .alerta-erro{
+        font-family: var(--fonte-titulo);
+        background: linear-gradient(174deg, rgba(244, 67, 54, 0.741), rgba(203, 32, 32, 0.459));
+        color:#baf8ff;
+        padding: 10px;
+        border-radius: 6px;
+    }
+
     .campo-formulario{
         /* Coloca o rótulo acima de cada caixa. */
         display: flex;

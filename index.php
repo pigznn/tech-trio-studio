@@ -1,4 +1,76 @@
-﻿<!DOCTYPE html>
+﻿<?php
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+$ok = 0;
+if(isset($_POST['email'])){
+
+//Load Composer's autoloader (created by composer, not included with PHPMailer)
+require 'vendor/phpmailer/PHPMailer.php';
+require 'vendor/phpmailer/SMTP.php';
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+
+    // Pegar informações do formulário
+    $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    $assunto = $_POST["assunto"];
+    $mensagem = $_POST["mensagem"];
+    
+    //Server settings
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'contato.techtriostudio@gmail.com';                     //SMTP username
+    $mail->Password   = 'fvvwpxqtyqeinqec';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('contato.techtriostudio@gmail.com', 'Tech Trio Studio'); // Quem dispara o e-mail
+    $mail->addAddress('mundoprehistocico@gmail.com', 'André');     //Add a recipient
+    $mail->addAddress('ellen@example.com');               //Name is optional
+    // $mail->addReplyTo('info@example.com', 'Information');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
+
+    //Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = $assunto;
+    $mail->Body    = "
+        Nome: $nome <br>
+        E-Mail: $email <br>
+        Assunto: $assunto <br>
+        Mensagem: $mensagem
+    ";
+    $mail->AltBody = "
+        Nome: $nome \n
+        E-Mail: $email \n
+        Assunto: $assunto \n
+        Mensagem: $mensagem
+    ";
+
+    $mail->send();
+    $ok = 1;
+} catch (Exception $e) {
+    $ok = 2;
+}
+
+}
+?>
+
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -14,7 +86,7 @@
         content="criaÃ§Ã£o de sites, desenvolvimento web, design responsivo, agÃªncia digital, sites personalizados, UX UI design, identidade visual, marketing digital, presenÃ§a online, tecnologia digital">
 
     <!-- Autor do Site -->
-    <meta name="author" content="Arthur Ogrodowski, Kevelly Calvacanti, Yuri Lemos">
+    <meta name="author" content="TECH TRIO STUDIO">
 
     <!-- Open Graph (Compartilhar no Whats, Face, X, LinkedIn) -->
     <meta property="og:title" content="Holambratech">
@@ -30,22 +102,22 @@
 
     <!-- Link dos icons para favicon -->
 
-    <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="assets/icons/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="assets/icons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
 
@@ -56,6 +128,9 @@
      PADRÃO DOS NAVEGADORES PARA QUE NÃO HAJA 
      DIVERGÊNCIA QUANDO CARREGAR O SITE -->
     <link rel="stylesheet" href="css/reset.css">
+
+    <!-- Biblioteca FONTAWESOME para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- <link rel="stylesheet" type="text/css" href="css/slick.css" />
     <link rel="stylesheet" type="text/css" href="css/slick-theme.css" /> -->
@@ -184,7 +259,7 @@
         <!-- FINAL DOS NOSSO SERVIÇOS -->
 
         <!-- LINHA DO TEMPO -->
-        <section class="secao-linha-tempo site">
+        <section id="linha-tempo" class="secao-linha-tempo site">
 
             <header>
                 <p class="etiqueta">Como Trabalhamos</p>
@@ -526,6 +601,14 @@
                 <div class="container_form">
 
                     <form action="#" method="post">
+
+                        <!-- Alertas -->
+                        <?php if($ok == 1): ?>
+                            <div class="alerta-sucesso">Mensagem enviada com sucesso!</div>
+                        <?php elseif($ok == 2): ?>
+                            <div class="alerta-erro">Erro ao enviar mensagem. Por favor, tente novamente mais tarde.</div>
+                        <?php endif; ?>
+
                         <label class="campo-formulario">
                             <span>Seu nome completo</span>
                             <input type="text" name="nome" placeholder="Luis Alvez de lima" autocomplete="name" required>
@@ -595,10 +678,10 @@
                 <div class="rodape-links">
                     <h4>Serviços</h4>
                         <ul>
-                            <li><a href="#">Websites Optmizados</a></li>
-                            <li><a href="#">Landing Pages Premium</a></li>
-                            <li><a href="#">Otimização SEO</a></li>
-                            <li><a href="#">Suporte Exclusivo</a></li>
+                            <li><a href="#servicos">Websites Optmizados</a></li>
+                            <li><a href="#servicos">Landing Pages Premium</a></li>
+                            <li><a href="#servicos">Otimização SEO</a></li>
+                            <li><a href="#servicos">Suporte Exclusivo</a></li>
                         </ul>
                 
                 </div>
@@ -607,9 +690,9 @@
                 <div class="rodape-links">
                     <h4>Agência</h4>
                     <ul>
-                        <li><a href="#sobre">Sobre nós</a></li>
+                        <li><a href="#sobre">Sobre nós</a></li> 
                         <li><a href="#time">Nosso Time</a></li>
-                        <li><a href="#">Estudo de Casos</a></li>
+                        <li><a href="#linha-tempo">Estudo de Casos</a></li>
                         <li><a href="#contato">Fale Conosco</a></li>
                     </ul>    
 
@@ -627,7 +710,7 @@
             <div class="rodape-final site">
 
                 <div class="rodape-creditos">
-                    <p>&copy; <?php $data = date('Y'); echo $data; ?> - Criado e Desenvolvido por TIPI06 - SENAC SMP</p>
+                    <p>&copy; <?php echo date("Y"); ?> - Criado e Desenvolvido por Tech Trio Studio</p>
                 
                 </div>
                 
@@ -644,6 +727,12 @@
             
         </footer>
     <!-- FINAL - RODAPÉ DO SITE -->
+
+    <!-- INÍCIO - BOTÃO FLUTUANTE PARA O TOPO -->
+        <a href="#home" class="botao-flutuante">
+            <img src="assets/seta-para-cima.png" alt="Botão flutuante para voltar ao topo do site">
+        </a>
+     <!-- FIM - BOTÃO FLUTUANTE PARA O TOPO -->
 
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"

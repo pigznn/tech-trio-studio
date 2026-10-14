@@ -638,6 +638,10 @@ body{
 
 /* FAQ */
 
+.faq{
+    padding: 70px 0;
+}
+
 .accordion-container{
     max-width: 1500px;
     margin: 50px auto;
@@ -750,6 +754,23 @@ body{
         flex-direction: column;
         /* Mantém espaço constante entre os campos. */
         gap: 18px;
+    }
+
+    /* Alertas */
+    .alerta-sucesso{
+        font-family: var(--fonte-titulo);
+        background: linear-gradient(174deg, rgba(4, 149, 147, 0.741), rgba(1, 89, 88, 0.459));
+        color:#baf8ff;
+        padding: 10px;
+        border-radius: 6px;
+    }
+
+    .alerta-erro{
+        font-family: var(--fonte-titulo);
+        background: linear-gradient(174deg, rgba(244, 67, 54, 0.741), rgba(203, 32, 32, 0.459));
+        color:#baf8ff;
+        padding: 10px;
+        border-radius: 6px;
     }
 
     .campo-formulario{
@@ -990,6 +1011,37 @@ body{
         .redeSociais {
             gap: 20px;
             
+        }
+
+        /* Botão flutuante */
+
+        .botao-flutuante {
+            position: fixed;
+            bottom: 5%;
+            right: 4%;
+            width: 50px;
+            height: 50px;
+            background-color: var(--cor-destaque);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+
+            transition: 
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .botao-flutuante:hover {
+            background-color: var(--cor-destaque-claro);
+            box-shadow: 0 4px 20px rgba(12, 171, 168, 0.644);
+        }
+
+        .botao-flutuante img {
+            width: 75%;
+            height: 75%;
+            object-fit: cover;
         }
 
     /*!===========================*/

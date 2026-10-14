@@ -638,6 +638,10 @@ body{
 
 /* FAQ */
 
+.faq{
+    padding: 70px 0;
+}
+
 .accordion-container{
     max-width: 1500px;
     margin: 50px auto;
@@ -1007,6 +1011,37 @@ body{
         .redeSociais {
             gap: 20px;
             
+        }
+
+        /* Botão flutuante */
+
+        .botao-flutuante {
+            position: fixed;
+            bottom: 5%;
+            right: 4%;
+            width: 50px;
+            height: 50px;
+            background-color: var(--cor-destaque);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+
+            transition: 
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .botao-flutuante:hover {
+            background-color: var(--cor-destaque-claro);
+            box-shadow: 0 4px 20px rgba(12, 171, 168, 0.644);
+        }
+
+        .botao-flutuante img {
+            width: 75%;
+            height: 75%;
+            object-fit: cover;
         }
 
     /*!===========================*/

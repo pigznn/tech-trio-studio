@@ -76,48 +76,46 @@
 </head>
 
 <body>
-    <section id="home" class="topo site">
-        <div>
+    <!---- TOPO FLUTUANTE (LOGO + MENU) ---->
+    <header class="topo" id="topo">
+        <div class="topo-conteudo">
             <!---- LOGO ---->
-            <header>
-                <h1> <img src="assets/logo.img.png" alt="Logo do TechTrioStudio"></h1>
-            </header>
+            <a href="#home" class="logo">Tech Trio Studio</a>
 
             <!---- MENU ---->
             <nav class="menu">
-                <div>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#servicos">Serviços</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                    </ul>
-                </div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
             </nav>
-
-                <!------ REDES SOCIAIS ------>
-                <div>
-                    <ul class="redeSociais">
-                        <li><a href="#"><img src="assets/instagram-24.png" alt="instagram - Tech Trio Studio"></a></li>
-                        <li><a href="#"><img src="assets/linkedin-24.png" alt="Linkedin"></a></li>
-                        <li><a href="#"><img src="assets/whatsapp-24.png" alt="whatsApp - Tech Trio Studio"></a></li>
-                    </ul>
-                </div>
-
         </div>
+    </header>
 
+    <!---- HERO PARALLAX ---->
+    <!-- camadas do fundo para a frente; data-depth = quanto cada uma se move -->
+    <section id="home" class="hero">
+        <div class="hero-palco">
+            <div class="hero-camada hero-ceu-topo" data-depth="0.08" aria-hidden="true"></div>
+            <img class="hero-camada" src="assets/camadas/1080p/ceu.png" data-depth="0.08" alt="" fetchpriority="high">
+            <img class="hero-camada" src="assets/camadas/1080p/montanhas-fundo.png" data-depth="0.18" alt="">
+            <img class="hero-camada" src="assets/camadas/1080p/nuvens-meio.png" data-depth="0.32" alt="">
+
+            <h1 class="hero-titulo hero-camada" data-depth="0.38">
+                <span class="hero-titulo-te">Te</span><span class="hero-titulo-ch">ch</span> <span class="hero-titulo-trio">trio</span>
+            </h1>
+
+            <img class="hero-camada" src="assets/camadas/1080p/triangulo.png" data-depth="0.45" alt="">
+            <img class="hero-camada" src="assets/camadas/1080p/montanha-principal.png" data-depth="0.6" alt="">
+            <img class="hero-camada" src="assets/camadas/1080p/personagens.png" data-depth="0.66" data-rolagem="0.6" alt="Os três integrantes da Tech Trio Studio no topo de uma montanha">
+            <img class="hero-camada" src="assets/camadas/1080p/nuvens-frente.png" data-depth="1" alt="">
+        </div>
     </section>
-    </nav>
+
     <!-- CORPO -->
     <main>
-        <section>
-            <div class="banner">
-                <img src="assets/banner1-atual.png" alt="Banner 1">
-                <img src="assets/banner2-atual.png" alt="Banner 2">
-                
-            </div>
-
-        </section>
 
         <section id="sobre" class="sobre site">
             <header>
@@ -655,6 +653,7 @@
 
     <!-- MEU SCRIPT (ANIMAÇÃO) -->
     <script src="js/script.js"></script>
+    <script src="js/hero-parallax.js"></script>
     <script src="js/wow.min.js"></script>
 
 </body>

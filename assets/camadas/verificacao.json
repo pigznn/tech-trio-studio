@@ -1,0 +1,32 @@
+{
+  "gerado": "2026-10-14T18:11:28.292Z",
+  "ordem": [
+    "ceu",
+    "montanhas-fundo",
+    "nuvens-meio",
+    "triangulo",
+    "montanha-principal",
+    "personagens",
+    "nuvens-frente"
+  ],
+  "resultados": [
+    {
+      "label": "1080p (1920x1080) vs original",
+      "psnr": 69.95,
+      "mse": 0.0066,
+      "maxDiff": 4.8,
+      "pixelsAcimaDe3Niveis": 36,
+      "pctAcimaDe3Niveis": 0.0017,
+      "psnrComPersonagensSeparados": 66.6
+    },
+    {
+      "label": "4k (3840x2160) vs original ampliada 2x",
+      "psnr": 60.02,
+      "mse": 0.0648,
+      "maxDiff": 7.6,
+      "pixelsAcimaDe3Niveis": 72,
+      "pctAcimaDe3Niveis": 0.0009,
+      "psnrComPersonagensSeparados": 59.77
+    }
+  ]
+}

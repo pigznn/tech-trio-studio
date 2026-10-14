@@ -103,86 +103,217 @@ body{
     margin-bottom: 16px;
 }
 
-/* TOPO */
-.topo{
+/* links do menu (#sobre, #servicos...) param abaixo do topo fixo */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+/* TOPO FLUTUANTE: fica fixo sobre o hero; ao rolar ganha fundo de vidro */
+.topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: background-color .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
+}
+
+.topo.rolou {
+    background-color: rgba(8, 18, 21, .72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .25);
+}
+
+.topo-conteudo {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--cor-fundo1);
-    padding: 15px 0;
-
+    transition: padding .35s ease;
 }
 
-.topo div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-/* ocupa a largura toda: logo à esquerda, menu no meio, redes à direita */
-.topo > div {
-    width: 100%;
-    padding: 0 40px;
-    box-sizing: border-box;
-}
-
-
-.topo ul{
-    display: flex;
-    gap: 40px;
-    font-size: 30px;
+.topo.rolou .topo-conteudo {
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 /* LOGO */
-.topo h1 {
-    width: 130px;
-    height: 120px;
+.logo {
+    display: block;
+    width: 70px;
+    height: 66px;
     background-image: url(../assets/logo.img.png);
     /* o PNG tem muita borda vazia: amplia e mostra só o desenho */
-    background-size: 260px 260px;
-    background-position: -65px -60px;
+    background-size: 140px 140px;
+    background-position: -35px -32px;
     background-repeat: no-repeat;
     overflow: hidden;
-    margin: 0 20px;
     text-indent: -9999px;
 }
 
-
-
-
-/* MENU */
-.menu{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    font-family: var(--fonte-titulo);
-}
-
+/* MENU (branco para ficar visível sobre o céu) */
 .menu ul {
     display: flex;
-    order: 0;
+    gap: 56px;
 }
 
 .menu ul li a {
-    font-size: 25px;
-    text-decoration: none;
-    margin: 0 15px;
     font-family: var(--fonte-titulo);
-    color: var(--cor-titulo);
-    transition: .25s ease;
-
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+    transition: color .25s ease;
 }
 
 .menu ul li a:hover {
     color: var(--cor-destaque-claro);
 }
 
-/* REDE SOCIAIS */
-/* afasta as redes sociais do menu */
-.topo .redeSociais {
-    margin-left: 70px;
+/* HERO PARALLAX */
+/* --hero-descida: quanto a cena desce (fração da altura do palco). A montanha e o título
+   ficam no final da primeira tela e o hero cresce essa mesma medida, para as nuvens
+   escuras de transição continuarem aparecendo logo abaixo, na troca de seção */
+.hero {
+    --hero-descida: 0.16;
+    position: relative;
+    height: calc(100vh + var(--hero-descida) * max(56.25vw, 100vh));
+    height: calc(100svh + var(--hero-descida) * max(56.25vw, 100svh));
+    min-height: 560px;
+    overflow: hidden;
+    background-color: var(--cor-fundo-1);
+}
+
+/* palco 16:9 que cobre o hero (como object-fit: cover), apoiado no fim do hero,
+   para todas as camadas ficarem alinhadas */
+.hero-palco {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: max(100%, 177.78vh);
+    width: max(100%, 177.78svh);
+    aspect-ratio: 16 / 9;
+    transform: translateX(-50%);
+    container-type: inline-size;
+}
+
+.hero-camada {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* extensão do céu acima do palco (cobre o espaço aberto pela descida):
+   reflexo espelhado da faixa de cima do céu, então a emenda fica contínua */
+.hero-camada.hero-ceu-topo {
+    top: -30%;
+    height: 30%;
+    /* mesmo centro de escala do céu (centro do palco), para a emenda não abrir no parallax */
+    transform-origin: 50% 266.67%;
+}
+
+.hero-ceu-topo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url(../assets/camadas/1080p/ceu.png) center top / 100% 333.34% no-repeat;
+    transform: scaleY(-1);
+}
+
+/* "Tech trio": acima do triângulo, entre as nuvens do meio e o triângulo */
+.hero-titulo {
+    inset: auto;
+    left: 48%;
+    top: 11.5%;
+    width: auto;
+    height: auto;
+    translate: -50% 0;
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    /* acompanha o palco, mas nunca passa da largura da tela (celular) */
+    font-size: min(7.9cqw, 15vw);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+}
+
+.hero-titulo-te {
+    color: #ffffff;
+}
+
+.hero-titulo-ch {
+    background: linear-gradient(180deg, #33d9d6 0%, #0CABA8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-titulo-trio {
+    color: #050809;
+}
+
+/* transição suave do fim do hero para a próxima seção */
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 18%;
+    background: linear-gradient(to bottom, rgba(11, 24, 28, 0), var(--cor-fundo-1));
+    pointer-events: none;
+}
+
+@media (max-width: 700px) {
+    .topo-conteudo {
+        padding: 12px 16px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 47px;
+        background-size: 100px 100px;
+        background-position: -25px -23px;
+    }
+
+    .menu ul {
+        gap: 18px;
+    }
+
+    .menu ul li a {
+        font-size: 15px;
+    }
+
+    .hero-titulo {
+        left: 50%;
+    }
+}
+
+@media (max-width: 420px) {
+    .logo {
+        width: 42px;
+        height: 40px;
+        background-size: 84px 84px;
+        background-position: -21px -19px;
+    }
+
+    .menu ul {
+        gap: 12px;
+    }
+
+    .menu ul li a {
+        font-size: 13px;
+    }
 }
 
 .redeSociais {
@@ -233,6 +364,8 @@ body{
     position: relative;
     width: 100%;
 }
+
+
 
 .banner img,
 .banner .slide {

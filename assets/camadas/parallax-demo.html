@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parallax — teste das camadas</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #05141c;
+        color: #d8eef4;
+        font:
+          14px/1.4 system-ui,
+          sans-serif;
+        overflow: hidden;
+      }
+
+      .hero {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .layer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        will-change: transform;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .painel {
+        position: fixed;
+        left: 16px;
+        bottom: 16px;
+        z-index: 10;
+        background: rgba(3, 20, 28, 0.78);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(120, 220, 235, 0.25);
+        border-radius: 10px;
+        padding: 12px 14px;
+        display: grid;
+        gap: 8px;
+        min-width: 240px;
+      }
+      .painel label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .painel input[type="range"] {
+        width: 120px;
+      }
+      .painel small {
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="hero">
+      <!-- do fundo para a frente; data-depth = quanto a camada se move -->
+      <img class="layer" data-name="ceu" data-depth="0.08" alt="" />
+      <img class="layer" data-name="montanhas-fundo" data-depth="0.18" alt="" />
+      <img class="layer" data-name="nuvens-meio" data-depth="0.32" alt="" />
+      <img class="layer" data-name="triangulo" data-depth="0.45" alt="" />
+      <img
+        class="layer"
+        data-name="montanha-principal"
+        data-depth="0.58"
+        alt=""
+      />
+      <img class="layer" data-name="personagens" data-depth="0.72" alt="" />
+      <img class="layer" data-name="nuvens-frente" data-depth="1.00" alt="" />
+    </div>
+
+    <div class="painel">
+      <label
+        >Intensidade
+        <input type="range" id="intensidade" min="0" max="60" value="30"
+      /></label>
+      <label
+        >Resolução
+        <select id="resolucao">
+          <option value="1080p">1080p</option>
+          <option value="4k">4K</option>
+        </select>
+      </label>
+      <label
+        ><span>Movimento vertical</span>
+        <input type="checkbox" id="vertical" checked
+      /></label>
+      <small>Mova o mouse (ou o dedo) sobre a imagem.</small>
+    </div>
+
+    <script>
+      const layers = [...document.querySelectorAll(".layer")];
+      const intensidade = document.getElementById("intensidade");
+      const resolucao = document.getElementById("resolucao");
+      const vertical = document.getElementById("vertical");
+
+      function carregar(pasta) {
+        layers.forEach((img) => {
+          img.src = `${pasta}/${img.dataset.name}.png`;
+        });
+      }
+      carregar(resolucao.value);
+      resolucao.addEventListener("change", () => carregar(resolucao.value));
+
+      // posição alvo (-1..1) e posição atual suavizada
+      let alvoX = 0,
+        alvoY = 0,
+        x = 0,
+        y = 0;
+
+      function mover(clientX, clientY) {
+        alvoX = (clientX / window.innerWidth) * 2 - 1;
+        alvoY = (clientY / window.innerHeight) * 2 - 1;
+      }
+      window.addEventListener("mousemove", (e) => mover(e.clientX, e.clientY));
+      window.addEventListener(
+        "touchmove",
+        (e) => mover(e.touches[0].clientX, e.touches[0].clientY),
+        { passive: true },
+      );
+      document.addEventListener("mouseleave", () => {
+        alvoX = 0;
+        alvoY = 0;
+      });
+
+      function quadro() {
+        x += (alvoX - x) * 0.08;
+        y += (alvoY - y) * 0.08;
+        const forca = +intensidade.value;
+        // escala um pouco maior que 1 para as bordas da tela nunca aparecerem
+        const escala =
+          1 +
+          (forca * 2.2) /
+            Math.min(window.innerWidth, (window.innerHeight * 16) / 9);
+        layers.forEach((img) => {
+          const d = +img.dataset.depth;
+          const dx = -x * forca * d;
+          const dy = vertical.checked ? -y * forca * d * 0.55 : 0;
+          img.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${escala})`;
+        });
+        requestAnimationFrame(quadro);
+      }
+      requestAnimationFrame(quadro);
+    </script>
+  </body>
+</html>

@@ -20,7 +20,7 @@ FONTES GOOGLE E LOCAL
 
 /*
 ============================
-VARIÃVEIS TECH TRIO STUDIO
+VARIÁVEIS TECH TRIO STUDIO
 ============================
 */
 
@@ -39,18 +39,18 @@ VARIÃVEIS TECH TRIO STUDIO
     --cor-teste-light:#4F686B;
     --cor-teste-dark: #8AA0A3; */
 
-    /* SUPERFÃCIE */
+    /* SUPERFÍCIE */
     --cor-fundo-1: #0B181C;
     --cor-fundo-2: #081215;
 
     /* TEXTO */
     --cor-titulo: #ffffff;
-    --cor-texto: #8AA0A3;            /* parÃ¡grafos, links e copyright */
+    --cor-texto: #8AA0A3;            /* parágrafos, links e copyright */
 
     /* MARCA */
-    --cor-destaque: #0CABA8;         /* "Studio", botÃµes, Ã­cones */
+    --cor-destaque: #0CABA8;         /* "Studio", botões, ícones */
     --cor-destaque-claro: #0fc2c0;   /* hover */
-    --cor-destaque-escuro: #015958;  /* fundo dos cÃ­rculos das redes */
+    --cor-destaque-escuro: #015958;  /* fundo dos círculos das redes */
     --cor-link: #526B6F;
     --cor-traço:#19383C;
 
@@ -103,76 +103,112 @@ body{
     margin-bottom: 16px;
 }
 
-/* links do menu (#sobre, #servicos...) param abaixo do topo fixo */
+/* links do menu (#sobre, #servicos...) param abaixo do topo fixo
+   (a rolagem suave fica a cargo do Locomotive Scroll, em js/script.js) */
 html {
-    scroll-behavior: smooth;
     scroll-padding-top: 90px;
+
+    /* esconde a barra de rolagem lateral (a página continua rolando normalmente) */
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;   /* Edge antigo */
 }
 
-/* TOPO FLUTUANTE: fica fixo sobre o hero; ao rolar ganha fundo de vidro */
+html::-webkit-scrollbar {
+    display: none;              /* Chrome, Edge, Safari, Opera */
+}
+
+/* TOPO FLUTUANTE: barra em pílula, sempre visível, com destaque animado nos links */
 .topo {
     position: fixed;
-    top: 0;
+    top: 18px;
     left: 0;
     right: 0;
     z-index: 100;
-    transition: background-color .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
-}
-
-.topo.rolou {
-    background-color: rgba(8, 18, 21, .72);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, .25);
+    padding: 0 16px;
+    pointer-events: none;
 }
 
 .topo-conteudo {
+    pointer-events: auto;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 18px 32px;
+    padding: 6px 10px 6px 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: padding .35s ease;
+    background-color: rgba(8, 18, 21, .55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+    animation: topoEntrada .7s cubic-bezier(.2, .8, .2, 1) both;
 }
 
-.topo.rolou .topo-conteudo {
-    padding-top: 8px;
-    padding-bottom: 8px;
+@keyframes topoEntrada {
+    from { opacity: 0; transform: translateY(-30px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* LOGO */
 .logo {
     display: block;
-    width: 70px;
-    height: 66px;
+    width: 52px;
+    height: 49px;
     background-image: url(../assets/logo.img.png);
     /* o PNG tem muita borda vazia: amplia e mostra só o desenho */
-    background-size: 140px 140px;
-    background-position: -35px -32px;
+    background-size: 104px 104px;
+    background-position: -26px -24px;
     background-repeat: no-repeat;
     overflow: hidden;
     text-indent: -9999px;
+    transition: transform .3s ease;
 }
 
-/* MENU (branco para ficar visível sobre o céu) */
+.logo:hover {
+    transform: rotate(-8deg) scale(1.08);
+}
+
+/* MENU */
+.menu {
+    position: relative;
+}
+
 .menu ul {
+    position: relative;
+    z-index: 1;
     display: flex;
-    gap: 56px;
+    gap: 6px;
 }
 
 .menu ul li a {
+    display: block;
+    padding: 10px 22px;
+    border-radius: 999px;
     font-family: var(--fonte-titulo);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     color: #ffffff;
     text-decoration: none;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, .35);
-    transition: color .25s ease;
+    transition: color .3s ease;
 }
 
-.menu ul li a:hover {
-    color: var(--cor-destaque-claro);
+.menu ul li a.foco {
+    color: var(--cor-fundo-2);
+}
+
+/* pílula que desliza até o link em foco */
+.menu-indicador {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background-color: var(--cor-destaque-claro);
+    box-shadow: 0 0 18px rgba(15, 194, 192, .55);
+    opacity: 0;
+    transition: transform .45s cubic-bezier(.5, 1.5, .4, .9), width .45s cubic-bezier(.5, 1.5, .4, .9), opacity .3s ease;
 }
 
 /* HERO PARALLAX */
@@ -275,23 +311,29 @@ html {
 }
 
 @media (max-width: 700px) {
+    .topo {
+        top: 10px;
+        padding: 0 10px;
+    }
+
     .topo-conteudo {
-        padding: 12px 16px;
+        padding: 4px 6px 4px 12px;
     }
 
     .logo {
-        width: 50px;
-        height: 47px;
-        background-size: 100px 100px;
-        background-position: -25px -23px;
+        width: 40px;
+        height: 38px;
+        background-size: 80px 80px;
+        background-position: -20px -18px;
     }
 
     .menu ul {
-        gap: 18px;
+        gap: 2px;
     }
 
     .menu ul li a {
-        font-size: 15px;
+        padding: 8px 12px;
+        font-size: 14px;
     }
 
     .hero-titulo {
@@ -300,19 +342,9 @@ html {
 }
 
 @media (max-width: 420px) {
-    .logo {
-        width: 42px;
-        height: 40px;
-        background-size: 84px 84px;
-        background-position: -21px -19px;
-    }
-
-    .menu ul {
-        gap: 12px;
-    }
-
     .menu ul li a {
-        font-size: 13px;
+        padding: 7px 8px;
+        font-size: 12px;
     }
 }
 
@@ -614,7 +646,7 @@ html {
 
 /*! FINAL LINHA TEMPO */
 
-/* ComeÃ§o de Equipe */
+/* Começo de Equipe */
 
 .equipe{
     background-color: var(--cor-fundo-2);
@@ -713,7 +745,7 @@ html {
 
 
 
-/* ComeÃ§o Funcionamentos do Site */
+/* Começo Funcionamentos do Site */
     /* .funcionamentos header h3{
         max-width: 1500px;
         text-align: center;
@@ -850,7 +882,7 @@ html {
         }
 
         .formulario-esquerda li a:hover{
-            /*? Esse 'filter' permite que pngs (ou outro tipo de itens nÃ£o-dinÃ¡micos) sejam alterado suas cores*/
+            /*? Esse 'filter' permite que pngs (ou outro tipo de itens não dinâmicos) tenham suas cores alteradas*/
             filter: invert(41%) sepia(24%) saturate(355%) hue-rotate(140deg) brightness(88%) contrast(87%);
         }
 
@@ -1100,7 +1132,7 @@ html {
         }
     /*! ========================= */
 
-    /*! LINHA DE SEPARAÃ‡ÃƒO  */
+    /*! LINHA DE SEPARAÇÃO  */
 
         .rodape-linha {
             height: 1px;
@@ -1109,7 +1141,7 @@ html {
 
     /*!==========================*/
 
-    /**! LINHAS FINAIS DO RODAPÃ‰ */
+    /**! LINHAS FINAIS DO RODAPÉ */
 
         .rodape-final {
             display: flex;

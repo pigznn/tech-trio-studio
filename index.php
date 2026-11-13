@@ -79,24 +79,19 @@ try {
 
     <!-- Descrição do Site -->
     <meta name="description"
-        content="A Tech Trio Studio cria sites modernos, rÃ¡pidos e personalizados para destacar sua marca e impulsionar resultados no digital">
+        content="A Tech Trio Studio cria sites modernos, rápidos e personalizados para destacar sua marca e impulsionar resultados no digital.">
 
     <!-- Palavras Chave -->
     <meta name="keywords"
-        content="criaÃ§Ã£o de sites, desenvolvimento web, design responsivo, agÃªncia digital, sites personalizados, UX UI design, identidade visual, marketing digital, presenÃ§a online, tecnologia digital">
+        content="criação de sites, desenvolvimento web, design responsivo, agência digital, sites personalizados, UX UI design, identidade visual, marketing digital, presença online, tecnologia digital">
 
     <!-- Autor do Site -->
     <meta name="author" content="TECH TRIO STUDIO">
 
     <!-- Open Graph (Compartilhar no Whats, Face, X, LinkedIn) -->
-    <meta property="og:title" content="Holambratech">
-    <meta property="og:description" content="Conte com um serviÃ§o especializado, rÃ¡pido e de confianÃ§a para resolver qualquer problema no seu smartphone, computador ou notebook. Atuamos com reparos de hardware e software, formataÃ§Ã£o, remoÃ§Ã£o de vÃ­rus, troca de peÃ§as, manutenÃ§Ã£o preventiva, recuperaÃ§Ã£o de sistema, otimizaÃ§Ã£o de desempenho e muito mais.
-
-        Trabalhamos com diversas marcas e modelos, oferecendo diagnÃ³stico preciso, atendimento transparente e soluÃ§Ãµes eficientes para o seu dia a dia. Seja para conserto, atualizaÃ§Ã£o ou suporte tÃ©cnico, aqui vocÃª encontra profissionalismo, qualidade e preÃ§o justo.
-        
-        Seu dispositivo em boas mÃ£os. Suas soluÃ§Ãµes tecnolÃ³gicas comeÃ§am aqui.">
-
-    <meta property="og:image" content="https://">
+    <meta property="og:title" content="Tech Trio Studio">
+    <meta property="og:description" content="A Tech Trio Studio cria sites modernos, rápidos e personalizados para destacar sua marca e impulsionar resultados no digital.">
+    <meta property="og:image" content="assets/logo.img.png">
     <meta property="og:type" content="website">
 
 
@@ -137,6 +132,9 @@ try {
 
     <link rel="stylesheet" href="css/accordion.min.css">
     
+    <!-- LOCOMOTIVE SCROLL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@5.0.1/dist/locomotive-scroll.css">
+
     <!-- APLICA TODOS OS ESTILOS DO HTML -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -159,6 +157,7 @@ try {
 
             <!---- MENU ---->
             <nav class="menu">
+                <span class="menu-indicador" aria-hidden="true"></span>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#sobre">Sobre</a></li>
@@ -200,21 +199,20 @@ try {
                 <div class="sobre-geral">
                     <div class="sobre-texto">
                         <p>A Tech Trio Studio é uma agência criativa focada em transformar ideias em soluções digitais
-                            modernas e eficientes. Unimos design, tecnologia e estraté gia para ajudar empresas a
+                            modernas e eficientes. Unimos design, tecnologia e estratégia para ajudar empresas a
                             crescerem e se destacarem no ambiente online. Trabalhamos com projetos personalizados,
                             sempre buscando qualidade, inovação e resultados reais. Mais do que serviços, entregamos
                             soluções que fortalecem a presença digital dos nossos clientes.</p>
                     </div>
 
                     <div class="sobre-img">
-                        <img src="assets/sobre.jpg" alt="Sobre">
+                        <img src="assets/sobre.jpg" alt="Sobre a Tech Trio Studio">
                     </div>
-
-
                 </div>
+            </div>
         </section>
 
-        <!-- COMEÇOO DOS NOSSO SERVIÇOS -->
+        <!-- COMEÇO DOS NOSSOS SERVIÇOS -->
         <section id="servicos" class="nossos-servicos">
             
         <div class="nossos-servicos-inteiro site">
@@ -225,26 +223,26 @@ try {
            
             <div class="coluna_de_servicos">
                 <div class="coluna_singular">
-                    <img src="assets/rolo-de-pintura.svg" alt="icon no paint">
+                    <img src="assets/rolo-de-pintura.svg" alt="Ícone de sites personalizados">
                     <h3>Sites Personalizados</h3>
                     <p>Criamos sites modernos, responsivos e personalizados para empresas, profissionais e marcas que desejam fortalecer sua presença digital. Cada projeto é desenvolvido com foco em desempenho, identidade visual e uma excelente experiência para o usuário. </p>
 
                 </div>
                 <div class="coluna_singular">
-                    <img src="assets/codigo-do-laptop.svg" alt="icon no paint">
+                    <img src="assets/codigo-do-laptop.svg" alt="Ícone de landing pages">
                     <h3>Landing Pages</h3>
-                    <p>Desenvolvemos páginas de alta conversão para divulgação de produtos, serviços, eventos ou campanhas. Com design estratégico e chamadas para ação bem posicionadas, as landing pages são pensadas para transformar visitantes em clientes</p>
+                    <p>Desenvolvemos páginas de alta conversão para divulgação de produtos, serviços, eventos ou campanhas. Com design estratégico e chamadas para ação bem posicionadas, as landing pages são pensadas para transformar visitantes em clientes.</p>
                 </div>
 
                 <div class="coluna_singular">
-                    <img src="assets/crescimento-profissional.svg" alt="icon no paint">
+                    <img src="assets/crescimento-profissional.svg" alt="Ícone de otimização SEO">
                     <h3>Otimização SEO</h3>
                     <p>Aplicamos técnicas de otimização que ajudam seu site a conquistar melhores posições nos mecanismos de busca, como o Google. O objetivo é aumentar a visibilidade da sua marca, atrair visitantes qualificados e melhorar o desempenho orgânico do seu site.</p>
 
                 </div>
 
                 <div class="coluna_singular">
-                    <img src="assets/administrador-alternativo.svg" alt="icon no paint">
+                    <img src="assets/administrador-alternativo.svg" alt="Ícone de suporte contínuo">
                     <h3>Suporte Contínuo</h3>
                     <p>Oferecemos suporte contínuo para manter seu site sempre atualizado, seguro e funcionando corretamente. Realizamos correções, atualizações de conteúdo, melhorias de desempenho e acompanhamento técnico sempre que necessário.</p>
 
@@ -254,7 +252,7 @@ try {
         </div>
 
         </section>
-        <!-- FINAL DOS NOSSO SERVIÇOS -->
+        <!-- FINAL DOS NOSSOS SERVIÇOS -->
 
         <!-- LINHA DO TEMPO -->
         <section id="linha-tempo" class="secao-linha-tempo site">
@@ -272,7 +270,7 @@ try {
             
                 <div class="item-linha-tempo">
                     <div class="item-titulo-lp">
-                        <img src="assets/brief-24.png" alt=""></img>
+                        <img src="assets/brief-24.png" alt="">
                         <p>01</p>
                     </div>
                     <div class="item-paragrafo-lp">
@@ -290,7 +288,7 @@ try {
         
                 <div class="item-linha-tempo">
                     <div class="item-titulo-lp">
-                        <img src="assets/mapa-24.png" alt=""></img>
+                        <img src="assets/mapa-24.png" alt="">
                         <p>02</p>
                     </div>
 
@@ -307,7 +305,7 @@ try {
         
                 <div class="item-linha-tempo">
                     <div class="item-titulo-lp">
-                        <img src="assets/design-24.png" alt=""></img>
+                        <img src="assets/design-24.png" alt="">
                         <p>03</p>
                     </div>
                     <div class="item-paragrafo-lp">
@@ -323,10 +321,10 @@ try {
         
                 <div class="item-linha-tempo">
                     <div class="item-titulo-lp">
-                        <img src="assets/terminal-24.png" alt=""></img>
+                        <img src="assets/terminal-24.png" alt="">
                         <p>04</p>
                     </div>
-                    <div class="item-paragrafo-lp"">
+                    <div class="item-paragrafo-lp">
                         <h4>Desenvolvimento e Programação</h4>
                         <p>Com o design aprovado, começa o desenvolvimento. Os desenvolvedores 
                         transformam o layout em um site funcional usando código (HTML, CSS, 
@@ -338,10 +336,10 @@ try {
         
                 <div class="item-linha-tempo">
                     <div class="item-titulo-lp">
-                        <img src="assets/zoom-in-24.png" alt=""></img>
+                        <img src="assets/zoom-in-24.png" alt="">
                         <p>05</p>
                     </div>
-                    <div class="item-paragrafo-lp"">
+                    <div class="item-paragrafo-lp">
                         <h4>Testes e Ajustes Finais</h4>
                         <p>Na sequência, vem a etapa de testes. A agência verifica se tudo está 
                         funcionando corretamente, corrigindo erros, testando em diferentes 
@@ -352,10 +350,10 @@ try {
 
                 <div class="item-linha-tempo">
                     <div class="item-titulo-lp">
-                        <img src="assets/launch-24.png" alt=""></img>
+                        <img src="assets/launch-24.png" alt="">
                         <p>06</p>
                     </div>
-                    <div class="item-paragrafo-lp"">
+                    <div class="item-paragrafo-lp">
                         <h4>Lançamento e Pós-Produção</h4>
                         <p>Por fim, acontece o lançamento. O site é publicado no servidor e 
                         passa a ficar disponível para o público. Mesmo depois disso, a 
@@ -378,22 +376,22 @@ try {
                 <header class="cabecario-equipe">
                     <p class="etiqueta">Quem cria sua infraestrutura</p>
                     <h3>Especialistas Dedicados ao seu Projeto</h3>
-                    <h4>Unindo engenharia, estratégia de negóciose design de ponta sob a mesma marca.</h4>
+                    <h4>Unindo engenharia, estratégia de negócios e design de ponta sob a mesma marca.</h4>
                 </header>
 
                 <div class="cards-equipe">
                     <div class="card">
-                        <img src="./assets/andre_foto.jpg" alt="foto do membro do TechTrioStudio">
+                        <img src="./assets/andre_foto.jpg" alt="Foto de André Coelho">
                         <h3>André Coelho</h3>
                     </div>
 
                     <div class="card">
-                        <img src="./assets/guilherme_foto.png" alt="foto do membro do TechTrioStudio">
+                        <img src="./assets/guilherme_foto.jpeg" alt="Foto de Guilherme Pignataro">
                         <h3>Guilherme Pignataro</h3>
                     </div>
 
                     <div class="card">
-                        <img src="./assets/kaua_foto.png" alt="foto da membra do TechTrioStudio">
+                        <img src="./assets/kaua_foto.png" alt="Foto de Kauã Moreira">
                         <h3>Kauã Moreira</h3>
                     </div>
 
@@ -547,7 +545,7 @@ try {
 
                     <div class="ac">
                         <h2 class="ac-header">
-                            <button type="button" class="ac-trigger"> Vocês oferecem suporte após a entrega do site?</button>
+                            <button type="button" class="ac-trigger">Vocês oferecem suporte após a entrega do site?</button>
                         </h2>
                         <div class="ac-panel">
                             <p class="ac-text">Sim. Após a publicação do projeto, oferecemos suporte para solucionar dúvidas, corrigir eventuais problemas e, caso desejado, planos de manutenção para manter o site atualizado e seguro.</p>
@@ -565,8 +563,7 @@ try {
 
                     <div class="ac">
                         <h2 class="ac-header">
-                            <button type="button" class="ac-trigger"> Posso solicitar alterações durante o desenvolvimento?
-                            </button>
+                            <button type="button" class="ac-trigger">Posso solicitar alterações durante o desenvolvimento?</button>
                         </h2>
                         <div class="ac-panel">
                             <p class="ac-text">Sim. Durante o desenvolvimento, mantemos contato constante para apresentar o progresso e receber seu feedback. Pequenos ajustes fazem parte do processo, enquanto alterações que mudem significativamente o escopo podem ser orçadas separadamente.</p>
@@ -590,8 +587,8 @@ try {
                     </h4>
 
                     <ul>
-                        <li><a href="#"><img src="assets/email-32.png" alt="Email para contato">contato@techtrio.com.br</a></li>
-                        <li><a href="#"><img src="assets/telefone.png" alt="Número de telefone para contato: +55 (11) 98765-4321">+55 (11) 98765-4321</a></li>
+                        <li><a href="mailto:contato@techtrio.com.br"><img src="assets/email-32.png" alt="Email para contato">contato@techtrio.com.br</a></li>
+                        <li><a href="tel:+5511987654321"><img src="assets/telefone.png" alt="Número de telefone para contato: +55 (11) 98765-4321">+55 (11) 98765-4321</a></li>
                     </ul>
                     
                 </div>
@@ -609,11 +606,11 @@ try {
 
                         <label class="campo-formulario">
                             <span>Seu nome completo</span>
-                            <input type="text" name="nome" placeholder="Luis Alvez de lima" autocomplete="name" required>
+                            <input type="text" name="nome" placeholder="Luís Alves de Lima" autocomplete="name" required>
                         </label>
 
                         <label class="campo-formulario">
-                            <span>Seu E-mail corporativo</span>
+                            <span>Seu e-mail corporativo</span>
                             <input type="email" name="email" placeholder="exemplo@empresa.com.br" autocomplete="email" required>
                         </label>
 
@@ -653,21 +650,20 @@ try {
 
 
     </main>
-    </div>
     <!-- COMEÇO - RODAPÉ DO SITE -->
         <footer class="rodape">
-            <!-- COMEÇO - COUNTEÚDO DO RODAPÉ -->
+            <!-- COMEÇO - CONTEÚDO DO RODAPÉ -->
             <div class="rodape-conteudo site">
 
                 <!-- PARÁGRAFO E IMAGEM À ESQUERDA -->
                 <div class="rodape-logo">
                         <div>
-                            <img src="assets/logo-sem-titulo.svg" alt="">
+                            <img src="assets/logo-sem-titulo.svg" alt="Logo Tech Trio Studio">
                             <p>TechTrio<span>Studio</span></p>
                         </div> 
                         <p>
                             Transformando marcas e impulsionando negócios através de engenharia
-                            web premium, design inteligente e otimização de converção.
+                            web premium, design inteligente e otimização de conversão.
                         </p>
 
                 </div>
@@ -676,7 +672,7 @@ try {
                 <div class="rodape-links">
                     <h4>Serviços</h4>
                         <ul>
-                            <li><a href="#servicos">Websites Optmizados</a></li>
+                            <li><a href="#servicos">Sites Otimizados</a></li>
                             <li><a href="#servicos">Landing Pages Premium</a></li>
                             <li><a href="#servicos">Otimização SEO</a></li>
                             <li><a href="#servicos">Suporte Exclusivo</a></li>
@@ -690,7 +686,7 @@ try {
                     <ul>
                         <li><a href="#sobre">Sobre nós</a></li> 
                         <li><a href="#time">Nosso Time</a></li>
-                        <li><a href="#linha-tempo">Estudo de Casos</a></li>
+                        <li><a href="#linha-tempo">Como Trabalhamos</a></li>
                         <li><a href="#contato">Fale Conosco</a></li>
                     </ul>    
 
@@ -699,7 +695,7 @@ try {
                 
 
             </div>
-            <!-- FINAL - COUNTEÚDO DO RODAPÉ -->
+            <!-- FINAL - CONTEÚDO DO RODAPÉ -->
 
             <div class="rodape-linha site"></div>
 
@@ -720,7 +716,6 @@ try {
                         <li><a href="#"><img src="assets/whatsapp-24.png" alt="Logo whatsApp - Tech Trio Studio"></a></li>
                     </ul>
                 </div>
-                </div>
             </div>
             
         </footer>
@@ -740,9 +735,13 @@ try {
     <script src="js/slick.min.js"></script>
     <script src="js/accordion.min.js"></script>
 
+    <!-- LOCOMOTIVE SCROLL (precisa vir antes do script.js, que o inicializa) -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@5.0.1/bundled/locomotive-scroll.min.js"></script>
+
     <!-- MEU SCRIPT (ANIMAÇÃO) -->
     <script src="js/script.js"></script>
     <script src="js/hero-parallax.js"></script>
     <script src="js/wow.min.js"></script>
+
 
 </body>

@@ -4,7 +4,6 @@
 // data-rolagem (opcional): profundidade usada só na rolagem (montanha e personagens rolam juntos)
 (function () {
     const hero = document.querySelector('.hero');
-    const topo = document.getElementById('topo');
     if (!hero) return;
 
     const camadas = [...hero.querySelectorAll('.hero-camada')];
@@ -15,10 +14,6 @@
 
     let alvoX = 0, alvoY = 0, x = 0, y = 0;
     let visivel = true, rodando = false;
-
-    function atualizarTopo() {
-        if (topo) topo.classList.toggle('rolou', window.scrollY > 40);
-    }
 
     function ativar() {
         if (rodando || !visivel || reduzirMovimento.matches) return;
@@ -61,7 +56,6 @@
     });
 
     window.addEventListener('scroll', function () {
-        atualizarTopo();
         ativar();
     }, { passive: true });
 
@@ -73,6 +67,5 @@
         if (visivel) ativar();
     }).observe(hero);
 
-    atualizarTopo();
     if (!reduzirMovimento.matches) { rodando = true; quadro(); }
 })();
